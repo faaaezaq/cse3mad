@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ASSIGMENT CSE3MAD</string>
+    <string name="app_name">MobileAppDev</string>
+    <string name="email">Email...</string>
 </resources>
