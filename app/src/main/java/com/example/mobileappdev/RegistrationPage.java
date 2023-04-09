@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import android.os.Bundle;
 
+
 public class RegistrationPage extends AppCompatActivity {
 
     @Override
