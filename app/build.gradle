@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.assigmentcse3mad'
+    namespace 'com.example.mobileappdev'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.assigmentcse3mad"
+        applicationId "com.example.mobileappdev"
         minSdk 27
         targetSdk 33
         versionCode 1

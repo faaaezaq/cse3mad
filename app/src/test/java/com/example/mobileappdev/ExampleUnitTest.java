@@ -1,4 +1,4 @@
-package com.example.assigmentcse3mad;
+package com.example.mobileappdev;
 
 import org.junit.Test;
 

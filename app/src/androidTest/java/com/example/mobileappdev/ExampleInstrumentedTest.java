@@ -1,4 +1,4 @@
-package com.example.assigmentcse3mad;
+package com.example.mobileappdev;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.assigmentcse3mad", appContext.getPackageName());
+        assertEquals("com.example.mobileappdev", appContext.getPackageName());
     }
 }
