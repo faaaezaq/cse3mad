@@ -24,9 +24,20 @@ import android.os.Bundle;
 
 public class HomePage extends AppCompatActivity {
 
+    Button button5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        button5 = findViewById(R.id.button5);
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePage.this , Nutrition_page.class));
+            }
+        });
     }
 }

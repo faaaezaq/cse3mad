@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/currentCaloriesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Current Calories: 0"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/targetCaloriesTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/currentCaloriesTextView"
+        android:layout_marginTop="120dp"
+        android:text="Target Calories: 0"
+        android:textSize="20sp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="338dp"
+        android:layout_height="155dp"
+        android:layout_below="@id/targetCaloriesTextView"
+        android:layout_alignRight="@id/targetCaloriesTextView"
+        android:layout_marginTop="115dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="50"
+        android:outlineSpotShadowColor="@color/black"
+        android:progressDrawable="@drawable/ic_custom_progress2" />
+
+
+</RelativeLayout>

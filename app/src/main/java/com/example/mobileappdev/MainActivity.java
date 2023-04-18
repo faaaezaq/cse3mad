@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     Button button1;
     Button button2;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
