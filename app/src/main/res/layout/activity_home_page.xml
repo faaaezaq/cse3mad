@@ -5,21 +5,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#E6FBFA">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account created. This will be home page"
-        android:textColor="@color/black"
-        />
-
-    <Button
-        android:id="@+id/button5"
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barchartUI"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textView4"
-        android:layout_marginTop="0dp"
-        android:text="Click me to go to nutrition page" />
-
+        android:layout_height="280dp"
+        android:layout_marginTop="70sp" />
 
 </RelativeLayout>
