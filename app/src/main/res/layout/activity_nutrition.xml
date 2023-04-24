@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="#E6FBFA">
+    android:background="#E6FBFA"
+    tools:context=".Nutrition_page">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -150,14 +152,14 @@
         android:layout_alignBottom="@id/layout4"
         android:gravity="start">
 
-            <TextView
-                android:id="@+id/water"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:layout_marginTop="25dp"
-                android:layout_marginLeft="100dp"
-                android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/water"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="100dp"
+            android:textColor="@color/black"/>
 
     </LinearLayout>
 
@@ -232,7 +234,7 @@
 
     </LinearLayout>
 
-<!--    ///Code for Lunch-->
+    <!--    ///Code for Lunch-->
     <LinearLayout
         android:id = "@+id/layout6"
         android:layout_width="match_parent"
@@ -305,7 +307,7 @@
 
     </LinearLayout>
 
-<!--    Code for Dinner -->
+    <!--    Code for Dinner -->
 
     <LinearLayout
         android:id = "@+id/layout7"
@@ -379,7 +381,7 @@
 
     </LinearLayout>
 
-<!--    Snacks Code below-->
+    <!--    Snacks Code below-->
     <LinearLayout
         android:id = "@+id/layout8"
         android:layout_width="match_parent"
@@ -451,4 +453,3 @@
 
     </LinearLayout>
 </RelativeLayout>
-

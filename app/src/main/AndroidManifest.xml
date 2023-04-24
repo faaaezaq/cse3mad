@@ -12,7 +12,7 @@
         android:theme="@style/Theme.MobileAppDev"
         tools:targetApi="31">
         <activity
-            android:name=".Nutrition_page"
+            android:name=".NutritionPage"
             android:exported="false" />
         <activity
             android:name=".HomePage"
@@ -30,6 +30,7 @@
             </intent-filter>
         </activity>
     </application>
+
 
 
 </manifest>

@@ -48,8 +48,9 @@ public class HomePage extends AppCompatActivity {
                         setContentView(R.layout.activity_workout);
                         break;
                     case R.id.nutrition:
-                        setContentView(R.layout.activity_nutrition_page);
-                        startActivity(new Intent(HomePage.this, Nutrition_page.class));
+                        setContentView(R.layout.activity_nutrition);
+                        startActivity(new Intent(HomePage.this, NutritionPage.class));
+
 
                         break;
                     case R.id.apparel:
@@ -77,14 +78,13 @@ public class HomePage extends AppCompatActivity {
         Description description = new Description();
         description.setText("Steps count");
         barChart.setDescription(description);
-        barChart.setMinimumWidth(5);
 
         BarDataSet barDataSet = new BarDataSet(barArrayList, "STEP COUNT");
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
         barDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(10f);
+        barDataSet.setValueTextSize(16f);
 
         barChart.getDescription().setEnabled(true);
         barChart.getLegend().setEnabled(false);
@@ -95,7 +95,7 @@ public class HomePage extends AppCompatActivity {
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        String[] daysOfWeek = {" " , " ", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat","Sun"};
+        String[] daysOfWeek = {"", "", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat","Sun"};
         //TODO: Debug days of the week to figure out why it ignores the first two indexes
         xAxis.setValueFormatter(new IndexAxisValueFormatter(daysOfWeek));
     }
