@@ -3,23 +3,15 @@ package com.example.mobileappdev;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.text.Editable;
-import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.GradientDrawable;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class Nutrition_page extends AppCompatActivity {
     private ProgressBar progressBar;
@@ -129,6 +121,7 @@ public class Nutrition_page extends AppCompatActivity {
                 Toast.makeText(Nutrition_page.this, "Calories Stored : " + text, Toast.LENGTH_SHORT).show();
                 setCurrentCalories();
                 breakfastIntake.setText("");
+
             }
         });
 
@@ -203,10 +196,12 @@ public class Nutrition_page extends AppCompatActivity {
         return progress;
     }
     private int retrieveCurrentCalories() {
-        // Retrieve current calorie value from database or shared preferences here
         return breakfastCaloriesFinal + LunchCaloriesFinal + DinnerCaloriesFinal + SnacksCaloriesFinal;
     }
     private int retrieveTargetCalories() {
         return 100;
         }
+
+    public void store_input(View view) {
+    }
 }
