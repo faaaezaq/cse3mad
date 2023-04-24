@@ -27,15 +27,19 @@
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:text="Full name *"
+        android:textSize="15dp"
         android:textColor="@color/black" />
+
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="21dp"
         android:layout_height="19dp"
-        app:srcCompat="@android:drawable/ic_lock_idle_lock"
-        android:layout_alignLeft="@id/editTextTextPersonName6"/>
-
+        android:layout_below="@id/editTextTextPassword"
+        android:layout_alignLeft="@id/editTextTextPersonName6"
+        android:layout_marginLeft="-1dp"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@android:drawable/ic_lock_idle_lock" />
 
     <EditText
         android:id="@+id/editTextTextPersonName7"
@@ -45,6 +49,7 @@
         android:layout_marginTop="3dp"
         android:ems="10"
         android:hint="Faez Ahmed Qureshi"
+        android:textSize="10dp"
         android:backgroundTint="@color/black"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -56,9 +61,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextTextPersonName7"
-        android:layout_marginTop="21dp"
-        android:paddingLeft="10dp"
+        android:layout_marginTop="22dp"
+        android:paddingLeft="22dp"
         android:text="Enter your email *"
+        android:textSize="15dp"
         android:textColor="@color/black" />
 
     <EditText
@@ -69,6 +75,7 @@
         android:layout_marginTop="11dp"
         android:ems="10"
         android:hint="someone@gmail.com"
+        android:textSize="10dp"
         android:backgroundTint="@color/black"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -79,12 +86,10 @@
         android:id="@+id/imageView3"
         android:layout_width="23dp"
         android:layout_height="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264"
+        android:layout_below="@id/editTextTextPersonName7"
+        android:layout_alignLeft="@id/textView"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="22dp"
         app:srcCompat="@android:drawable/sym_action_email" />
 
     <TextView
@@ -93,8 +98,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextTextPersonName8"
         android:layout_marginTop="26dp"
-        android:paddingLeft="10dp"
+        android:paddingLeft="20dp"
         android:text="Enter your Password *"
+        android:textSize="15dp"
         android:textColor="@color/black" />
 
     <EditText
@@ -103,6 +109,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="hotpancake"
+        android:textSize="10dp"
         android:backgroundTint="@color/black"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -115,33 +122,30 @@
         android:id="@+id/imageView4"
         android:layout_width="17dp"
         android:layout_height="19dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.375"
+        android:layout_below="@id/editTextTextPersonName8"
+        android:layout_alignLeft="@id/textView2"
+        android:layout_marginTop="25dp"
         app:srcCompat="@android:drawable/ic_lock_idle_lock" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Confirm your password"
-        android:textColor="@color/black"
-        android:paddingLeft="10dp"
-        android:layout_below="@id/editTextTextPassword" />
+        android:layout_below="@id/editTextTextPassword"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:text="Confirm your password *"
+        android:textSize="15dp"
+        android:textColor="@color/black" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499"
+        android:layout_below="@id/editTextTextPersonName5"
+        android:layout_marginTop="33dp"
+        android:layout_marginRight="-20dp"
+        android:layout_toLeftOf="@id/editTextTextPersonName6"
         app:srcCompat="@android:drawable/ic_lock_idle_lock" />
 
     <EditText
@@ -152,6 +156,7 @@
         android:textColorHint="@color/black"
         android:inputType="textPassword"
         android:hint = "hotpancake"
+        android:textSize="10dp"
         android:paddingLeft="10dp"
         android:backgroundTint="@color/black"
         android:textColor="@color/black"
@@ -161,16 +166,17 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create account"
+        android:layout_below="@id/editTextTextPassword3"
+        android:layout_marginTop="11dp"
         android:backgroundTint="@color/white"
-        android:textColor="@color/black"
-        android:layout_below="@id/editTextTextPassword3" />
+        android:text="Create account"
+        android:textColor="@color/black" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/button3"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="34dp"
         android:background="@color/black" />
 
     <TextView
@@ -178,11 +184,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editTextTextMultiLine2"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="45dp"
         android:gravity="center"
-        android:textSize="25dp"
         android:text="Already have an account? "
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/button5"
