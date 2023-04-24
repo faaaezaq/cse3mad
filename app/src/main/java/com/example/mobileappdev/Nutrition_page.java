@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
-public class    Nutrition_page extends AppCompatActivity {
+public class Nutrition_page extends AppCompatActivity {
     private ProgressBar progressBar;
     private ProgressBar waterProgressBar;
     private ProgressBar breakfastProgressBar;
