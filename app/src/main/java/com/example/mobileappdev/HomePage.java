@@ -2,6 +2,8 @@ package com.example.mobileappdev;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -47,6 +49,9 @@ public class HomePage extends AppCompatActivity {
                         break;
                     case R.id.nutrition:
                         setContentView(R.layout.activity_nutrition);
+                        startActivity(new Intent(HomePage.this, NutritionPage.class));
+
+
                         break;
                     case R.id.apparel:
                         setContentView(R.layout.activity_apparel);
