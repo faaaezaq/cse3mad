@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/weight"
+        android:icon="@drawable/weight_24"
+        android:title="Weight"/>
+
+    <item
+        android:id="@+id/workout"
+        android:icon="@drawable/workout_24"
+        android:title="Workout"/>
+
+
+    <item
+        android:id="@+id/floatingHomeButton"
+        android:title=""/>
+
+    <item
+        android:id="@+id/nutrition"
+        android:icon="@drawable/nutri_24"
+        android:title="Nutrition"/>
+    <item
+        android:id="@+id/apparel"
+        android:icon="@drawable/apparel_24"
+        android:title="Apparel"/>
+
+
+
+</menu>

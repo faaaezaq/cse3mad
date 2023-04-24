@@ -9,8 +9,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    //testing push
     Button button1;
     Button button2;
     @SuppressLint("MissingInflatedId")

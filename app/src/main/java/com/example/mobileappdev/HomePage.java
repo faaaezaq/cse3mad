@@ -1,28 +1,10 @@
 package com.example.mobileappdev;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.telephony.SmsManager;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import android.os.Bundle;
-
-import android.os.Bundle;
-
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -31,12 +13,13 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
-
     ArrayList barArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +28,33 @@ public class HomePage extends AppCompatActivity {
         getData();
         barChartStyling();
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
+        bottomNavigationView.setSelectedItemId(R.id.floatingHomeButton);
 
-
-
-
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.floatingHomeButton:
+                        setContentView(R.layout.activity_home_page);
+                        break;
+                    case R.id.weight:
+                        setContentView(R.layout.activity_weights);
+//                        startActivity(new Intent(MainActivity.this, WeightsActivity.class));
+                        break;
+                    case R.id.workout:
+                        setContentView(R.layout.activity_workout);
+                        break;
+                    case R.id.nutrition:
+                        setContentView(R.layout.activity_nutrition);
+                        break;
+                    case R.id.apparel:
+                        setContentView(R.layout.activity_apparel);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     private void getData(){
@@ -88,4 +94,5 @@ public class HomePage extends AppCompatActivity {
         //TODO: Debug days of the week to figure out why it ignores the first two indexes
         xAxis.setValueFormatter(new IndexAxisValueFormatter(daysOfWeek));
     }
+
 }
