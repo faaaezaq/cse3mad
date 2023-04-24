@@ -18,32 +18,32 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
-        ArrayList barArrayList;
-    private BottomNavigationView bottomNavigationView;
+    ArrayList barArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-
         getData();
         barChartStyling();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavBar);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
+        bottomNavigationView.setSelectedItemId(R.id.fab);
+
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.fab:
+                        setContentView(R.layout.activity_home_page);
+                        break;
                     case R.id.weight:
                         setContentView(R.layout.activity_weights);
 //                        startActivity(new Intent(MainActivity.this, WeightsActivity.class));
                         break;
                     case R.id.workout:
                         setContentView(R.layout.activity_workout);
-                        break;
-                    case R.id.fab:
-                        setContentView(R.layout.activity_home_page);
                         break;
                     case R.id.nutrition:
                         setContentView(R.layout.activity_nutrition);
