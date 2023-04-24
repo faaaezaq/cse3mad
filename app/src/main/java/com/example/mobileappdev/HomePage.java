@@ -29,13 +29,13 @@ public class HomePage extends AppCompatActivity {
         barChartStyling();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
-        bottomNavigationView.setSelectedItemId(R.id.fab);
+        bottomNavigationView.setSelectedItemId(R.id.floatingHomeButton);
 
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.fab:
+                    case R.id.floatingHomeButton:
                         setContentView(R.layout.activity_home_page);
                         break;
                     case R.id.weight:
