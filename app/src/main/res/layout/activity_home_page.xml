@@ -10,14 +10,9 @@
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchartUI"
-        android:layout_width="389dp"
-        android:layout_height="213dp"
-        android:layout_marginTop="70sp"
-        android:paddingStart="50dp"
-        android:paddingEnd="20dp">
-
-    </com.github.mikephil.charting.charts.BarChart>
-
+        android:layout_width="380dp"
+        android:layout_height="258dp"
+        android:layout_marginTop="0dp" />
 
     <LinearLayout
         android:id="@+id/layout1"
@@ -229,7 +224,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/home_24"
             app:layout_anchor="@id/bottomNavBar"
+
             />
+
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
