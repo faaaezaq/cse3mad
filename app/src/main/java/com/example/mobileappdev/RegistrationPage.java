@@ -26,19 +26,19 @@ public class RegistrationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_page);
 
-        Button button3;
-        Button button4;
+        Button button1;
+        Button button2;
 
-        button3 = findViewById(R.id.button5);
-        button4 = findViewById(R.id.button3);
+        button1 = findViewById(R.id.button5);
+        button2 = findViewById(R.id.button3);
 
-        button3.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(RegistrationPage.this, MainActivity.class));
             }
         });
-        button4.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(RegistrationPage.this,HomePage.class));
