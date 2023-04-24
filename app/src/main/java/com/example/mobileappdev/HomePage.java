@@ -36,6 +36,7 @@ import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
 
+    Button button;
     ArrayList barArrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,14 @@ public class HomePage extends AppCompatActivity {
         getData();
         barChartStyling();
 
+        button = findViewById(R.id.button2);
 
-
-
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePage.this,Nutrition_page.class));
+            }
+        });
     }
 
     private void getData(){
@@ -67,13 +72,14 @@ public class HomePage extends AppCompatActivity {
         Description description = new Description();
         description.setText("Steps count");
         barChart.setDescription(description);
+        barChart.setMinimumWidth(5);
 
         BarDataSet barDataSet = new BarDataSet(barArrayList, "STEP COUNT");
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
         barDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
+        barDataSet.setValueTextSize(10f);
 
         barChart.getDescription().setEnabled(true);
         barChart.getLegend().setEnabled(false);
@@ -84,7 +90,7 @@ public class HomePage extends AppCompatActivity {
 
         XAxis xAxis = barChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        String[] daysOfWeek = {"", "", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat","Sun"};
+        String[] daysOfWeek = {" " , " ", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat","Sun"};
         //TODO: Debug days of the week to figure out why it ignores the first two indexes
         xAxis.setValueFormatter(new IndexAxisValueFormatter(daysOfWeek));
     }
