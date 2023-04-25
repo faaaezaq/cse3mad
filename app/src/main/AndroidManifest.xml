@@ -18,6 +18,9 @@
             android:name=".HomePage"
             android:exported="false" />
         <activity
+            android:name=".WorkoutPage"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationPage"
             android:exported="false" />
         <activity

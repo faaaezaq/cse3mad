@@ -46,6 +46,8 @@ public class HomePage extends AppCompatActivity {
                         break;
                     case R.id.workout:
                         setContentView(R.layout.activity_workout);
+                        startActivity(new Intent(HomePage.this, WorkoutPage.class));
+
                         break;
                     case R.id.nutrition:
                         setContentView(R.layout.activity_nutrition);
