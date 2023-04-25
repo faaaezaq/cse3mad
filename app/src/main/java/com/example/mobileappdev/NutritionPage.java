@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class NutritionPage extends AppCompatActivity {
     private ProgressBar progressBar;
     private ProgressBar waterProgressBar;
@@ -57,6 +59,15 @@ public class NutritionPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nutrition);
+
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
+        NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
+
+        //TODO: Debug why this page renders twice and when clicked on the icon in the nav bar again, the progress bar for calories burnt changes
+
+
 
         progressBar = findViewById(R.id.progressBar);
         waterProgressBar = findViewById(R.id.waterIntakeProgressBar);

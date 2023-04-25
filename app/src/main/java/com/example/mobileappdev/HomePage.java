@@ -31,37 +31,9 @@ public class HomePage extends AppCompatActivity {
         barChartStyling();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
-        bottomNavigationView.setSelectedItemId(R.id.floatingHomeButton);
+        NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
 
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.floatingHomeButton:
-                        setContentView(R.layout.activity_home_page);
-                        break;
-                    case R.id.weight:
-                        setContentView(R.layout.activity_weights);
-//                        startActivity(new Intent(MainActivity.this, WeightsActivity.class));
-                        break;
-                    case R.id.workout:
-                        setContentView(R.layout.activity_workout);
-                        startActivity(new Intent(HomePage.this, WorkoutPage.class));
-
-                        break;
-                    case R.id.nutrition:
-                        setContentView(R.layout.activity_nutrition);
-                        startActivity(new Intent(HomePage.this, NutritionPage.class));
-
-
-                        break;
-                    case R.id.apparel:
-                        setContentView(R.layout.activity_apparel);
-                        break;
-                }
-                return true;
-            }
-        });
+        //TODO: debug why floatingHomeButton doesnt work
     }
 
     private void getData(){

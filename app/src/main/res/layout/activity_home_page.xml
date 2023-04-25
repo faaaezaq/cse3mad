@@ -4,31 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="16dp"
     android:background="#E6FBFA">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barchartUI"
-        android:layout_width="380dp"
-        android:layout_height="258dp"
-        android:layout_marginTop="0dp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barchartUI"
+            android:layout_width="match_parent"
+            android:layout_height="268dp"
+            android:layout_marginTop="0dp" />
 
     <LinearLayout
         android:id="@+id/layout1"
-        android:layout_width="372dp"
-        android:layout_height="168dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/barchartUI"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="144dp"
+            android:layout_height="135dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/custom_box"
             android:orientation="vertical"
@@ -73,7 +76,7 @@
 
             <LinearLayout
                 android:layout_width="160dp"
-                android:layout_height="146dp"
+                android:layout_height="135dp"
                 android:background="@drawable/custom_box"
                 android:orientation="vertical"
                 android:padding="20dp">
@@ -114,19 +117,18 @@
 
     <LinearLayout
         android:id="@+id/layout2"
-        android:layout_width="372dp"
-        android:layout_height="168dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/layout1"
         android:layout_marginStart="5dp"
         android:layout_marginTop="-2dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="160dp"
-            android:layout_height="146dp"
+            android:layout_height="135dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/custom_box"
             android:orientation="vertical"
@@ -152,7 +154,7 @@
 
             <LinearLayout
                 android:layout_width="160dp"
-                android:layout_height="146dp"
+                android:layout_height="135dp"
                 android:background="@drawable/custom_box"
                 android:orientation="vertical"
                 android:padding="20dp">
@@ -191,43 +193,13 @@
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="wrap_content"
-        android:layout_height="715dp"
-        android:id="@+id/frame_layout"
-        tools:context=".MainActivity">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:id="@+id/bottomNavBar"
+        <include
+            layout="@layout/generic_nav_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:fabCradleMargin="10dp"
-            app:fabCradleRoundedCornerRadius="10dp"
-            app:fabCradleVerticalOffset="10dp">
+            android:layout_height="wrap_content" />
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationBar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/transparent_bg"
-                app:labelVisibilityMode="labeled"
-                app:menu="@menu/bottom_nav_menu"
-
-                />
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home_24"
-            app:layout_anchor="@id/bottomNavBar"
-
-            />
+    </LinearLayout>
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>

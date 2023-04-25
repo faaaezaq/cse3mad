@@ -12,6 +12,7 @@ import android.widget.Toast;
 import android.content.Intent;
 
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class WorkoutPage extends AppCompatActivity {
@@ -32,6 +33,9 @@ public class WorkoutPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
+        NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
