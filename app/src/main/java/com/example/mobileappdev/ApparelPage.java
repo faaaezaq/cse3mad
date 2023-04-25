@@ -3,6 +3,8 @@ package com.example.mobileappdev;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class ApparelPage extends AppCompatActivity {
 
@@ -10,6 +12,9 @@ public class ApparelPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apparel);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
+        NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
 
 
     }

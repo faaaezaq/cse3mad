@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="#E6FBFA"
-    tools:context=".Nutrition_page">
+    tools:context=".NutritionPage">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -440,6 +441,7 @@
         android:layout_alignEnd="@id/layout8"
         android:layout_alignTop="@id/layout8"
         android:layout_alignBottom="@id/layout8"
+        android:id="@+id/layoutBottom"
         android:gravity="start">
 
         <TextView
@@ -452,4 +454,16 @@
             android:textColor="@color/black"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutBottom">
+
+        <include
+            layout="@layout/generic_nav_bar"
+            android:layout_width="391dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 </RelativeLayout>
