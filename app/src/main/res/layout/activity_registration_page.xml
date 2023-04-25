@@ -38,42 +38,42 @@
 
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/name_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextTextPersonName6"
         android:layout_marginTop="3dp"
-        android:ems="10"
-        android:hint="Faez Ahmed Qureshi"
         android:backgroundTint="@color/black"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:ems="10"
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextTextPersonName7"
+        android:layout_below="@id/name_field"
         android:layout_marginTop="21dp"
         android:paddingLeft="10dp"
         android:text="Enter your email *"
         android:textColor="@color/black" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName8"
+        android:id="@+id/email_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView"
         android:layout_marginTop="11dp"
-        android:ems="10"
-        android:hint="someone@gmail.com"
         android:backgroundTint="@color/black"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
+        android:ems="10"
+        android:hint="example@gmail.com"
         android:inputType="textPersonName"
-        android:paddingLeft="10dp" />
+        android:paddingLeft="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -91,25 +91,24 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editTextTextPersonName8"
+        android:layout_below="@id/email_field"
         android:layout_marginTop="26dp"
         android:paddingLeft="10dp"
         android:text="Enter your Password *"
         android:textColor="@color/black" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/password_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="hotpancake"
-        android:backgroundTint="@color/black"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:inputType="textPassword"
         android:layout_below="@id/textView2"
+        android:backgroundTint="@color/black"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
         android:paddingLeft="10dp"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -130,7 +129,7 @@
         android:text="Confirm your password"
         android:textColor="@color/black"
         android:paddingLeft="10dp"
-        android:layout_below="@id/editTextTextPassword" />
+        android:layout_below="@id/password_field" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -145,31 +144,31 @@
         app:srcCompat="@android:drawable/ic_lock_idle_lock" />
 
     <EditText
-        android:id="@+id/editTextTextPassword3"
+        android:id="@+id/confirm_password_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:textColorHint="@color/black"
-        android:inputType="textPassword"
-        android:hint = "hotpancake"
-        android:paddingLeft="10dp"
+        android:layout_below="@id/textView3"
         android:backgroundTint="@color/black"
+        android:ems="10"
+        android:hint="Re-Enter Password"
+        android:inputType="textPassword"
+        android:paddingLeft="10dp"
         android:textColor="@color/black"
-        android:layout_below="@id/textView3" />
+        android:textColorHint="@color/black" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/create_account_button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create account"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
-        android:layout_below="@id/editTextTextPassword3" />
+        android:layout_below="@id/confirm_password_field" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/button3"
+        android:layout_below="@id/create_account_button2"
         android:layout_marginTop="25dp"
         android:background="@color/black" />
 
@@ -185,7 +184,7 @@
         android:textColor="@color/black" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_below="@+id/textView5"
@@ -201,6 +200,6 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:layout_below="@id/button3"/>
+        android:layout_below="@id/create_account_button2"/>
 
 </RelativeLayout>
