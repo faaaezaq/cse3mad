@@ -1,4 +1,12 @@
 <resources>
-    <string name="app_name">MobileAppDev</string>
+    <string name="app_name">Fitness4You</string>
     <string name="email">Email...</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="open" >Open Navigation Drawer</string>
+    <string name="close" >Close Navigation Drawer</string>
+    <string name="current_calories">Current Calories: %1$d</string>
+    <string name="target_calories"> Target calories : %1d </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

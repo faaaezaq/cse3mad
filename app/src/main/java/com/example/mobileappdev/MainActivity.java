@@ -21,9 +21,12 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
+Database_Link_Code_Foundation
 
     private Button button3;
-
+    Button button1;
+    Button button2;
+ 
     @SuppressLint("MissingInflatedId")
 
     @Override
