@@ -21,11 +21,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
-Database_Link_Code_Foundation
+
+
 
     private Button button3;
     Button button1;
     Button button2;
+
  
     @SuppressLint("MissingInflatedId")
 
@@ -44,6 +46,16 @@ Database_Link_Code_Foundation
                 startActivity(new Intent(MainActivity.this, RegistrationPage.class));
             }
         });
+        button2 = findViewById(R.id.login_button);
+
+        button2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, HomePage.class));
+            }
+        });
+
 
 
     }
