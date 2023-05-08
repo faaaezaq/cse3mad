@@ -1,12 +1,24 @@
 package com.example.mobileappdev;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
@@ -18,14 +30,42 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements SensorEventListener {
     ArrayList barArrayList;
+
+    SensorManager sensorManager;
+    TextView stepsCounter;
+
+    Sensor mStepCounter;
+
+    int stepCount = 0;
+
+    //boolean running = false;
+
+    boolean isCounterSensorPresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        stepsCounter = findViewById(R.id.textView7);
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null) {
+            mStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+//            stepsCounter.getDisplay(stepCount);
+            Log.d(TAG, "Steps are " + mStepCounter);
+            isCounterSensorPresent = true;
+        } else {
+            stepsCounter.setText("Counter Sensor is not present");
+            isCounterSensorPresent = false;
+        }
 
         getData();
         barChartStyling();
@@ -35,6 +75,54 @@ public class HomePage extends AppCompatActivity {
 
         //TODO: debug why floatingHomeButton doesnt work
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
+            sensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+
+    /*@Override
+    protected void onResume() {
+        super.onResume();
+        running = true;
+        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if (countSensor != null) {
+            sensorManager.registerListener((SensorEventListener) this, countSensor, SensorManager.SENSOR_DELAY_UI);
+        } else {
+            Toast.makeText(this, "Sensor Not Found!", Toast.LENGTH_LONG).show();
+
+        }
+    }
+
+     */
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
+            sensorManager.unregisterListener(this, mStepCounter);
+        //To Unregister
+    }
+
+
+
+    @Override
+    public void onSensorChanged (SensorEvent sensorEvent) {
+        if (sensorEvent.sensor == mStepCounter) {
+            stepCount = (int) sensorEvent.values[0];
+            stepsCounter.setText(String.valueOf(stepCount));
+            Log.d(TAG, "Step count: " + stepCount);
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {
+
+    }
+
 
     private void getData(){
         barArrayList= new ArrayList();

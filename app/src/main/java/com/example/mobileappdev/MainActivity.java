@@ -21,9 +21,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
-Database_Link_Code_Foundation
 
-    private Button button3;
+    Button button3;
     Button button1;
     Button button2;
  
@@ -35,10 +34,17 @@ Database_Link_Code_Foundation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        button2 = findViewById(R.id.login_button);
         button3 = findViewById(R.id.create_account_button1);
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, HomePage.class));
+            }
+        });
         button3.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, RegistrationPage.class));
@@ -47,5 +53,4 @@ Database_Link_Code_Foundation
 
 
     }
-
 }
