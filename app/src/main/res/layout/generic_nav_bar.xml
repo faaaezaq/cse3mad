@@ -15,12 +15,13 @@
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomNavBar"
-            android:layout_width="match_parent"
+            android:layout_width="395dp"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="10dp"
-            app:fabCradleVerticalOffset="10dp">
+            app:fabCradleVerticalOffset="10dp"
+            >
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationBar"
@@ -37,7 +38,7 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="250dp"
             android:src="@drawable/home_24"
             app:layout_anchor="@id/bottomNavBar"
 
