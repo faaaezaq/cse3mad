@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -47,10 +48,8 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     private NavigationView navigationView;
     private SidebarClass sidebar;
     TextView waterIntake;
-//    public static final String DEFAULT = "N/A";
-//    private ProgressBar summaryProgressBar;
-//    summaryProgressBar = findViewById(R.id.progressBar2);
-
+    public static final String DEFAULT = "N/A";
+    private ProgressBar summaryProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +59,8 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         navigationView = findViewById(R.id.nav_view);
         sidebar = new SidebarClass(this, drawerLayout, navigationView);
         sidebar.setupSidebar();
+        summaryProgressBar = findViewById(R.id.progressBar2);
+
 
         stepsCounter = findViewById(R.id.textView7);
 
@@ -69,17 +70,17 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
         waterIntake = findViewById(R.id.waterIntakeNum);
 
-//        SharedPreferences sharedPreferences = getSharedPreferences("MyData", MODE_PRIVATE);
-//        String name = sharedPreferences.getString("name",DEFAULT);
-//        waterIntake.setText(name);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.clear();
-//
-//        SharedPreferences sharedPreferences1 = getSharedPreferences("ProgressBar1", MODE_PRIVATE);
-//        String progress = sharedPreferences1.getString("name", DEFAULT);
-//        summaryProgressBar.setProgress(Integer.parseInt(progress));
-//        SharedPreferences.Editor editor1 = sharedPreferences.edit();
-//        editor.clear();
+        SharedPreferences sharedPreferences = getSharedPreferences("MyData", MODE_PRIVATE);
+        String name = sharedPreferences.getString("name",DEFAULT);
+        waterIntake.setText(name);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+
+        SharedPreferences sharedPreferences1 = getSharedPreferences("ProgressBar1", MODE_PRIVATE);
+        String progress = sharedPreferences1.getString("name", DEFAULT);
+        summaryProgressBar.setProgress(Integer.parseInt(progress));
+        SharedPreferences.Editor editor1 = sharedPreferences.edit();
+        editor1.clear();
 
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null) {
             mStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
@@ -87,7 +88,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
             Log.d(TAG, "Steps are " + mStepCounter);
             isCounterSensorPresent = true;
         } else {
-            stepsCounter.setText("Counter Sensor is not present");
+            stepsCounter.setText("Potato");
             isCounterSensorPresent = false;
         }
 
