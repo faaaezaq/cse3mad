@@ -55,17 +55,17 @@
 
                 <TextView
                     android:id="@+id/textView8"
-                    android:textColor="@color/black"
-                    android:layout_width="280dp"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:layout_width="275dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="NIKE™"
-                    android:textSize="30sp" />
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/nike_next"
-                    android:layout_width="60dp"
+                    android:layout_width="55dp"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/white"
                     android:imeOptions="actionDone"
@@ -152,12 +152,22 @@
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/adidas_next"
-                        android:layout_width="50dp"
-                        android:layout_height="41dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/next_button" />
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:imeOptions="actionDone"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/next_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.962"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.53" />
+
+                    />
 
 
                 </LinearLayout>
@@ -232,12 +242,22 @@
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
-                    <ImageView
+                    <ImageButton
                         android:id="@+id/gymshark_next"
-                        android:layout_width="50dp"
-                        android:layout_height="41dp"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/next_button" />
+                        android:layout_width="48dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/white"
+                        android:imeOptions="actionDone"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/next_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.962"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.53" />
+
+                    />
 
 
                 </LinearLayout>

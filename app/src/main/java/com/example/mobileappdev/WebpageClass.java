@@ -1,9 +1,9 @@
 package com.example.mobileappdev;
 
 import android.os.Bundle;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,12 +14,17 @@ public class WebpageClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.webpage_view);
-        webView = findViewById(R.id.webView);
 
+        webView = findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://www.nike.com/au/women");
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+
+        String url = getIntent().getStringExtra("url");
+        if (url != null) {
+            webView.loadUrl(url);
+        }
     }
 
 
@@ -31,6 +36,5 @@ public class WebpageClass extends AppCompatActivity {
         else{
             super.onBackPressed();
         }
-
     }
 }
