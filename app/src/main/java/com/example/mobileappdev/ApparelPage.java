@@ -21,6 +21,9 @@ public class ApparelPage extends AppCompatActivity {
     private SidebarClass sidebar;
 
     private ImageButton nike_button;
+    private ImageButton adidas_button;
+    private ImageButton gymshark_button;
+
     Context context;
 
 
@@ -29,6 +32,9 @@ public class ApparelPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apparel);
         nike_button = findViewById(R.id.nike_next);
+        adidas_button = findViewById(R.id.adidas_next);
+        gymshark_button = findViewById(R.id.gymshark_next);
+
 
 
 
@@ -44,9 +50,27 @@ public class ApparelPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ApparelPage.this, WebpageClass.class);
+                intent.putExtra("url", "https://www.nike.com/au/women");
                 startActivity(intent);
-                }
+            }
+        });
 
+        gymshark_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ApparelPage.this, WebpageClass.class);
+                intent.putExtra("url", "https://www.gymshark.com");
+                startActivity(intent);
+            }
+        });
+
+        adidas_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ApparelPage.this, WebpageClass.class);
+                intent.putExtra("url", "https://www.adidas.com");
+                startActivity(intent);
+            }
         });
     }
 
