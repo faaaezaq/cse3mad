@@ -26,6 +26,10 @@ import com.google.android.material.navigation.NavigationView;
 
 
 public class NutritionPage extends AppCompatActivity {
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private SidebarClass sidebar;
     private ProgressBar progressBar;
     private ProgressBar waterProgressBar;
     private ProgressBar breakfastProgressBar;
@@ -57,9 +61,6 @@ public class NutritionPage extends AppCompatActivity {
     EditText SnacksIntake;
     TextView SnacksTextViewValue;
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ActionBarDrawerToggle drawerToggle;
 
     protected int initalWater = 0;
     protected int water = 0;
@@ -78,6 +79,10 @@ public class NutritionPage extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
 
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        sidebar = new SidebarClass(this, drawerLayout, navigationView);
+        sidebar.setupSidebar();
 
         progressBar = findViewById(R.id.progressBar);
         waterProgressBar = findViewById(R.id.waterIntakeProgressBar);
@@ -236,14 +241,6 @@ public class NutritionPage extends AppCompatActivity {
         setCurrentCalories();
     }
 
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(drawerToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void setCurrentCalories() {
         currentCalories = retrieveCurrentCalories();
         targetCalories = retrieveTargetCalories();
@@ -271,13 +268,17 @@ public class NutritionPage extends AppCompatActivity {
 
     public void store_input(View view) {
     }
-    public void onBackPressed(){
-        if(drawerLayout.isDrawerOpen(GravityCompat.START))
-        {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+
+    @Override
+    public void onBackPressed() {
+        if (!sidebar.onBackPressed()) {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Pass the menu item to SidebarClass
+        return sidebar.onOptionsItemSelected(item);
     }
 }

@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,8 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
@@ -46,10 +49,19 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
     boolean isCounterSensorPresent;
 
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private SidebarClass sidebar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        sidebar = new SidebarClass(this, drawerLayout, navigationView);
+        sidebar.setupSidebar();
 
         stepsCounter = findViewById(R.id.textView7);
 
@@ -77,6 +89,18 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return sidebar.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!sidebar.onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
@@ -95,9 +119,9 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
             Toast.makeText(this, "Sensor Not Found!", Toast.LENGTH_LONG).show();
 
         }
-    }
+    }*/
 
-     */
+
 
     @Override
     protected void onPause() {
@@ -122,7 +146,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
-
 
     private void getData(){
         barArrayList= new ArrayList();
