@@ -24,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 
 
@@ -32,6 +33,9 @@ import com.google.android.material.navigation.NavigationView;
 
 
 public class NutritionPage extends AppCompatActivity {
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private SidebarClass sidebar;
     private static final int REQUEST_CODE = 1;
     private ProgressBar progressBar;
     private ProgressBar waterProgressBar;
@@ -64,9 +68,7 @@ public class NutritionPage extends AppCompatActivity {
     EditText SnacksIntake;
     TextView SnacksTextViewValue;
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ActionBarDrawerToggle drawerToggle;
+
 
     protected int initalWater = 0;
     protected int water = 0;
@@ -84,7 +86,10 @@ public class NutritionPage extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
-
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        sidebar = new SidebarClass(this, drawerLayout, navigationView);
+        sidebar.setupSidebar();
 
         progressBar = findViewById(R.id.progressBar);
         waterProgressBar = findViewById(R.id.waterIntakeProgressBar);
@@ -116,31 +121,6 @@ public class NutritionPage extends AppCompatActivity {
         addWater = findViewById(R.id.plusButtonForWaterIntake);
         minusWater = findViewById(R.id.minusButtonForWaterIntake);
         waterIntake = findViewById(R.id.water);
-
-//        drawerLayout = findViewById(R.id.drawer_layout);
-//        navigationView = findViewById(R.id.nav_view);
-//        drawerToggle =new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
-//        drawerLayout.addDrawerListener(drawerToggle);
-//        drawerToggle.syncState();
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch(item.getItemId())
-//                {
-//                    case R.id.inbox:
-//                        Toast.makeText(NutritionPage.this, "Inbox Selected ", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.signout:
-//                        Intent intent = new Intent(NutritionPage.this,MainActivity.class);
-//                        startActivity(intent);
-//                        finish();
-//                        break;
-//                }
-//                drawerLayout.closeDrawer(GravityCompat.START);
-//                return true;
-//            }
-//        });
 
         addWater.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,14 +229,6 @@ public class NutritionPage extends AppCompatActivity {
         setCurrentCalories();
     }
 
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(drawerToggle.onOptionsItemSelected(item))
-        {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void setCurrentCalories() {
         currentCalories = retrieveCurrentCalories();
         targetCalories = retrieveTargetCalories();
@@ -293,13 +265,17 @@ public class NutritionPage extends AppCompatActivity {
 
     public void store_input(View view) {
     }
-    public void onBackPressed(){
-        if(drawerLayout.isDrawerOpen(GravityCompat.START))
-        {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-        else {
+
+    public void onBackPressed() {
+        if (!sidebar.onBackPressed()) {
             super.onBackPressed();
         }
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return sidebar.onOptionsItemSelected(item);
+    }
+
 }
