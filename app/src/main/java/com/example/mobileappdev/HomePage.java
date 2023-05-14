@@ -2,14 +2,9 @@ package com.example.mobileappdev;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -19,9 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
@@ -32,38 +25,41 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
-import org.w3c.dom.Text;
+import com.google.android.material.navigation.NavigationView;
+import android.content.SharedPreferences;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 
 public class HomePage extends AppCompatActivity implements SensorEventListener {
     ArrayList barArrayList;
-    public static final String DEFAULT = "N/A";
-
-
     SensorManager sensorManager;
     TextView stepsCounter;
 
     Sensor mStepCounter;
 
-    TextView waterIntake;
-
-    private ProgressBar summaryProgressBar;
     int stepCount = 0;
 
     //boolean running = false;
 
     boolean isCounterSensorPresent;
 
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private SidebarClass sidebar;
+    TextView waterIntake;
+//    public static final String DEFAULT = "N/A";
+//    private ProgressBar summaryProgressBar;
+//    summaryProgressBar = findViewById(R.id.progressBar2);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        summaryProgressBar = findViewById(R.id.progressBar2);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        sidebar = new SidebarClass(this, drawerLayout, navigationView);
+        sidebar.setupSidebar();
 
         stepsCounter = findViewById(R.id.textView7);
 
@@ -73,17 +69,17 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
         waterIntake = findViewById(R.id.waterIntakeNum);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyData", MODE_PRIVATE);
-        String name = sharedPreferences.getString("name",DEFAULT);
-        waterIntake.setText(name);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear();
-
-        SharedPreferences sharedPreferences1 = getSharedPreferences("ProgressBar1", MODE_PRIVATE);
-        String progress = sharedPreferences1.getString("name", DEFAULT);
-        summaryProgressBar.setProgress(Integer.parseInt(progress));
-        SharedPreferences.Editor editor1 = sharedPreferences.edit();
-        editor.clear();
+//        SharedPreferences sharedPreferences = getSharedPreferences("MyData", MODE_PRIVATE);
+//        String name = sharedPreferences.getString("name",DEFAULT);
+//        waterIntake.setText(name);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.clear();
+//
+//        SharedPreferences sharedPreferences1 = getSharedPreferences("ProgressBar1", MODE_PRIVATE);
+//        String progress = sharedPreferences1.getString("name", DEFAULT);
+//        summaryProgressBar.setProgress(Integer.parseInt(progress));
+//        SharedPreferences.Editor editor1 = sharedPreferences.edit();
+//        editor.clear();
 
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null) {
             mStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
@@ -91,7 +87,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
             Log.d(TAG, "Steps are " + mStepCounter);
             isCounterSensorPresent = true;
         } else {
-            stepsCounter.setText("Potato");
+            stepsCounter.setText("Counter Sensor is not present");
             isCounterSensorPresent = false;
         }
 
@@ -102,6 +98,18 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
 
         //TODO: debug why floatingHomeButton doesnt work
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return sidebar.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!sidebar.onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -123,9 +131,9 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
             Toast.makeText(this, "Sensor Not Found!", Toast.LENGTH_LONG).show();
 
         }
-    }
+    }*/
 
-     */
+
 
     @Override
     protected void onPause() {
@@ -150,6 +158,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
+
     private void getData(){
         barArrayList= new ArrayList();
         barArrayList.add(new BarEntry(2f, 1890));
