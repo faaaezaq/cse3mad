@@ -1,5 +1,6 @@
 package com.example.mobileappdev;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,8 +8,13 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -26,6 +32,7 @@ import com.google.android.material.navigation.NavigationView;
 
 
 public class NutritionPage extends AppCompatActivity {
+    private static final int REQUEST_CODE = 1;
     private ProgressBar progressBar;
     private ProgressBar waterProgressBar;
     private ProgressBar breakfastProgressBar;
@@ -142,6 +149,12 @@ public class NutritionPage extends AppCompatActivity {
                 waterIntake.setText(initalWater + "");
                 water++;
                 waterProgressBar.setProgress(water);
+                String str = waterIntake.getText().toString();
+                SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("name",str);
+                editor.putInt("progressBar", water);
+                editor.commit();
             }
         });
         minusWater.setOnClickListener(new View.OnClickListener() {
@@ -252,7 +265,16 @@ public class NutritionPage extends AppCompatActivity {
         currentCaloriesTextView.setText(getResources().getString(R.string.current_calories, currentCalories));
         targetCaloriesTextView.setText(getResources().getString(R.string.target_calories, targetCalories));
         int progressValue = calculateProgressValue(currentCalories, targetCalories);
+        progressBar.setMax(retrieveTargetCalories());
         progressBar.setProgress(progressValue);
+
+        String str1 = String.valueOf(progressValue);
+        SharedPreferences sharedPref = getSharedPreferences("ProgressBar1",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("name",str1);
+        editor.putInt("progressBar", water);
+        editor.apply();
+
     }
 
     private int calculateProgressValue(int currentCalories, int targetCalories) {
@@ -266,7 +288,7 @@ public class NutritionPage extends AppCompatActivity {
         return breakfastCaloriesFinal + LunchCaloriesFinal + DinnerCaloriesFinal + SnacksCaloriesFinal;
     }
     private int retrieveTargetCalories() {
-        return 2500;
+        return 5000;
     }
 
     public void store_input(View view) {

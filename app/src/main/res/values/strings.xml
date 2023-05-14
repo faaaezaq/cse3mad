@@ -3,8 +3,8 @@
     <string name="email">Email...</string>
     <string name="open_drawer">Open Drawer</string>
     <string name="close_drawer">Close Drawer</string>
-    <string name="open" >Open Navigation Drawer</string>
-    <string name="close" >Close Navigation Drawer</string>
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
     <string name="current_calories">Current Calories: %1$d</string>
     <string name="target_calories"> Target calories : %1d </string>
     <!-- TODO: Remove or change this placeholder text -->
