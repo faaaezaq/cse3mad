@@ -87,7 +87,6 @@
         <TextView
             android:layout_width="143dp"
             android:layout_height="47dp"
-            android:paddingEnd="30dp"
             android:text="Water Intake"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -169,6 +168,7 @@
             android:layout_width="143dp"
             android:layout_height="47dp"
             android:text="Breakfast"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -249,6 +249,7 @@
             android:layout_width="143dp"
             android:layout_height="47dp"
             android:text="Lunch"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -325,6 +326,7 @@
             android:layout_width="143dp"
             android:layout_height="47dp"
             android:text="Dinner"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -406,6 +408,7 @@
             android:layout_height="47dp"
             android:paddingEnd="30dp"
             android:text="Snacks"
+            android:padding="5dp"
             android:textColor="@color/black"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -478,7 +481,7 @@
         app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.804" />
+        app:layout_constraintVertical_bias="0.809" />
 
     <include
         layout="@layout/generic_nav_bar"
