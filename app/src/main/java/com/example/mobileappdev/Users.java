@@ -1,5 +1,4 @@
 package com.example.mobileappdev;
-
 public class Users{
         private String Name;
         private String Email;
