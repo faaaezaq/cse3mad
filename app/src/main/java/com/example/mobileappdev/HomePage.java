@@ -12,6 +12,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,18 +35,32 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorManager;
     TextView stepsCounter;
 
-    boolean running = false;
+    Sensor mStepCounter;
+
+    int stepCount = 0;
+
+    //boolean running = false;
+
+    boolean isCounterSensorPresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        stepsCounter = (TextView) findViewById(R.id.textView7);
+        stepsCounter = findViewById(R.id.textView7);
 
-        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null) {
+            mStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+            isCounterSensorPresent = true;
+        } else {
+            stepsCounter.setText("Counter Sensor is not present");
+            isCounterSensorPresent = false;
+        }
 
         getData();
         barChartStyling();
@@ -59,29 +74,41 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     @Override
     protected void onResume() {
         super.onResume();
+        if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
+            sensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+
+    /*@Override
+    protected void onResume() {
+        super.onResume();
         running = true;
         Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (countSensor != null) {
             sensorManager.registerListener((SensorEventListener) this, countSensor, SensorManager.SENSOR_DELAY_UI);
         } else {
-            Toast.makeText(this, "Sensor Not Found!", Toast.LENGTH_LONG);
+            Toast.makeText(this, "Sensor Not Found!", Toast.LENGTH_LONG).show();
 
         }
-    }
-
-    /*@Override
-    protected void onPause() {
-        super.onPause();
-        running = false;
-
     }
 
      */
 
     @Override
-    public void onSensorChanged (SensorEvent event) {
-        if(running) {
-            stepsCounter.setText(String.valueOf(event.values[0]));
+    protected void onPause() {
+        super.onPause();
+        if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
+            sensorManager.unregisterListener(this, mStepCounter);
+        //To Unregister
+    }
+
+
+
+    @Override
+    public void onSensorChanged (SensorEvent sensorEvent) {
+        if (sensorEvent.sensor == mStepCounter) {
+            stepCount = (int) sensorEvent.values[0];
+            stepsCounter.setText(String.valueOf(stepCount));
         }
     }
 
