@@ -12,11 +12,8 @@ public class NavigationbarClass {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.floatingHomeButton:
+                    case R.id.home:
                         activity.startActivity(new Intent(activity, HomePage.class));
-                        break;
-                    case R.id.weight:
-                        activity.startActivity(new Intent(activity, WeightsPage.class));
                         break;
                     case R.id.workout:
                         activity.startActivity(new Intent(activity, WorkoutPage.class));

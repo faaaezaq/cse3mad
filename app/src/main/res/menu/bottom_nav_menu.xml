@@ -2,21 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/weight"
-        android:icon="@drawable/weight_24"
-        android:title="Weight"/>
+        android:id="@+id/home"
+        android:icon="@drawable/home_24"
+        android:title="Home"/>
 
     <item
         android:id="@+id/workout"
         android:icon="@drawable/workout_24"
         android:title="Workout"/>
-
-
-    <item
-        android:id="@+id/floatingHomeButton"
-        android:src="@drawable/home_24"
-        android:title=""/>
-
     <item
         android:id="@+id/nutrition"
         android:icon="@drawable/nutri_24"
