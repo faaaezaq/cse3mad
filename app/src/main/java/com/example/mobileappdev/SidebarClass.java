@@ -32,9 +32,6 @@ public class SidebarClass {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch(item.getItemId()) {
-                    case R.id.inbox:
-                        Toast.makeText(activity, "Inbox Selected ", Toast.LENGTH_SHORT).show();
-                        break;
                     case R.id.signout:
                         Intent intent = new Intent(activity, MainActivity.class);
                         activity.startActivity(intent);
