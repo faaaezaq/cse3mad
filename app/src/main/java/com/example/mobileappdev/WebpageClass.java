@@ -6,11 +6,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 public class WebpageClass extends AppCompatActivity {
-
     WebView webView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +23,6 @@ public class WebpageClass extends AppCompatActivity {
             webView.loadUrl(url);
         }
     }
-
-
     @Override
     public void onBackPressed(){
         if (webView.canGoBack()){
