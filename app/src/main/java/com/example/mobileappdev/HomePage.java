@@ -5,6 +5,8 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,6 +16,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -30,6 +34,7 @@ import com.google.android.material.navigation.NavigationView;
 import android.content.SharedPreferences;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class HomePage extends AppCompatActivity implements SensorEventListener {
     ArrayList barArrayList;
@@ -42,6 +47,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
     //boolean running = false;
 
+    //boolean running = false;
     boolean isCounterSensorPresent;
 
     private DrawerLayout drawerLayout;
@@ -60,7 +66,6 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         sidebar = new SidebarClass(this, drawerLayout, navigationView);
         sidebar.setupSidebar();
         summaryProgressBar = findViewById(R.id.progressBar2);
-
 
         stepsCounter = findViewById(R.id.textView7);
 
@@ -132,9 +137,10 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
             Toast.makeText(this, "Sensor Not Found!", Toast.LENGTH_LONG).show();
 
         }
+    }
+
+     
     }*/
-
-
 
     @Override
     protected void onPause() {
@@ -159,7 +165,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
-
+  
     private void getData(){
         barArrayList= new ArrayList();
         barArrayList.add(new BarEntry(2f, 1890));

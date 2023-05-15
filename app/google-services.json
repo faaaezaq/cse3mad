@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "185457677763",
-    "firebase_url": "https://cse3mad-default-rtdb.asia-southeast1.firebasedatabase.app",
-    "project_id": "cse3mad",
-    "storage_bucket": "cse3mad.appspot.com"
+    "project_number": "30611716548",
+    "project_id": "fitness4you-dd340",
+    "storage_bucket": "fitness4you-dd340.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:185457677763:android:d9c69a1f62fdba352a5976",
+        "mobilesdk_app_id": "1:30611716548:android:7ecdc2edc5ea085af8cc91",
         "android_client_info": {
           "package_name": "com.example.mobileappdev"
         }
       },
       "oauth_client": [
         {
-          "client_id": "185457677763-fda22j4945tsd6t91u7cumcacpbhndl4.apps.googleusercontent.com",
+          "client_id": "30611716548-f1d7jbv1rc4rb6odfdpujnkeoad2l6lb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC9rKA9XO1Vr7lD3A_5FwfZya4gCHNYlLU"
+          "current_key": "AIzaSyA5DPTbxk4_YSdRclR7G-3905e8t1H0r4w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "185457677763-fda22j4945tsd6t91u7cumcacpbhndl4.apps.googleusercontent.com",
+              "client_id": "30611716548-f1d7jbv1rc4rb6odfdpujnkeoad2l6lb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
