@@ -1,9 +1,12 @@
 package com.example.mobileappdev;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -14,8 +17,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class NutritionPage extends AppCompatActivity {
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private SidebarClass sidebar;
+    private static final int REQUEST_CODE = 1;
     private ProgressBar progressBar;
     private ProgressBar waterProgressBar;
     private ProgressBar breakfastProgressBar;
@@ -47,6 +55,8 @@ public class NutritionPage extends AppCompatActivity {
     EditText SnacksIntake;
     TextView SnacksTextViewValue;
 
+
+
     protected int initalWater = 0;
     protected int water = 0;
 
@@ -55,19 +65,18 @@ public class NutritionPage extends AppCompatActivity {
     int DinnerCaloriesFinal = 0;
     private int SnacksCaloriesFinal = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nutrition);
 
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
-
-        //TODO: Debug why this page renders twice and when clicked on the icon in the nav bar again, the progress bar for calories burnt changes
-
-
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        sidebar = new SidebarClass(this, drawerLayout, navigationView);
+        sidebar.setupSidebar();
 
         progressBar = findViewById(R.id.progressBar);
         waterProgressBar = findViewById(R.id.waterIntakeProgressBar);
@@ -107,6 +116,12 @@ public class NutritionPage extends AppCompatActivity {
                 waterIntake.setText(initalWater + "");
                 water++;
                 waterProgressBar.setProgress(water);
+                String str = waterIntake.getText().toString();
+                SharedPreferences sharedPref = getSharedPreferences("MyData",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("name",str);
+                editor.putInt("progressBar", water);
+                editor.commit();
             }
         });
         minusWater.setOnClickListener(new View.OnClickListener() {
@@ -122,17 +137,21 @@ public class NutritionPage extends AppCompatActivity {
         breakfastCalories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text = String.valueOf(breakfastIntake.getText());
-                int number = Integer.parseInt(text);
-                breakfastCaloriesFinal += number;
-                breakFastInputValue.setText(String.valueOf(breakfastCaloriesFinal));
-                breakfastProgressBar.setProgress(breakfastCaloriesFinal);
-                InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                Toast.makeText(NutritionPage.this, "Calories Stored : " + text, Toast.LENGTH_SHORT).show();
-                setCurrentCalories();
-                breakfastIntake.setText("");
-
+                String text = String.valueOf(breakfastIntake.getText()).trim();
+                if (text.isEmpty()) {
+                    Toast.makeText(NutritionPage.this, "Please enter an int value", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    int number = Integer.parseInt(text);
+                    breakfastCaloriesFinal += number;
+                    breakFastInputValue.setText(String.valueOf(breakfastCaloriesFinal));
+                    breakfastProgressBar.setProgress(breakfastCaloriesFinal);
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    Toast.makeText(NutritionPage.this, "Calories Stored : " + text, Toast.LENGTH_SHORT).show();
+                    setCurrentCalories();
+                    breakfastIntake.setText("");
+                }
             }
         });
 
@@ -140,31 +159,40 @@ public class NutritionPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String text = String.valueOf(LunchIntake.getText());
-                int number = Integer.parseInt(text);
-                LunchCaloriesFinal += number;
-                LunchTextViewValue.setText(String.valueOf(LunchCaloriesFinal));
-                LunchProgressBar.setProgress(LunchCaloriesFinal);
-                InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                Toast.makeText(NutritionPage.this, "Calories Stored : " + text, Toast.LENGTH_SHORT).show();
-                setCurrentCalories();
-                LunchIntake.setText("");
+                if (text.isEmpty()) {
+                    Toast.makeText(NutritionPage.this, "Please enter a number", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    int number = Integer.parseInt(text);
+                    LunchCaloriesFinal += number;
+                    LunchTextViewValue.setText(String.valueOf(LunchCaloriesFinal));
+                    LunchProgressBar.setProgress(LunchCaloriesFinal);
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    Toast.makeText(NutritionPage.this, "Calories Stored : " + text, Toast.LENGTH_SHORT).show();
+                    setCurrentCalories();
+                    LunchIntake.setText("");
+                }
             }
         });
-
         DinnerCalories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String text = String.valueOf(DinnerIntake.getText());
-                int number = Integer.parseInt(text);
-                DinnerCaloriesFinal +=number;
-                DinnerTextViewValue.setText(String.valueOf(DinnerCaloriesFinal));
-                DinnerProgressBar.setProgress(DinnerCaloriesFinal);
-                InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-                Toast.makeText(NutritionPage.this, "Calories Stored : " + text, Toast.LENGTH_SHORT).show();
-                setCurrentCalories();
-                DinnerIntake.setText("");
+                if (text.isEmpty()) {
+                    Toast.makeText(NutritionPage.this, "Please enter a number", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    int number = Integer.parseInt(text);
+                    DinnerCaloriesFinal += number;
+                    DinnerTextViewValue.setText(String.valueOf(DinnerCaloriesFinal));
+                    DinnerProgressBar.setProgress(DinnerCaloriesFinal);
+                    InputMethodManager inputManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    Toast.makeText(NutritionPage.this, "Calories Stored : " + text, Toast.LENGTH_SHORT).show();
+                    setCurrentCalories();
+                    DinnerIntake.setText("");
+                }
             }
         });
 
@@ -196,7 +224,16 @@ public class NutritionPage extends AppCompatActivity {
         currentCaloriesTextView.setText(getResources().getString(R.string.current_calories, currentCalories));
         targetCaloriesTextView.setText(getResources().getString(R.string.target_calories, targetCalories));
         int progressValue = calculateProgressValue(currentCalories, targetCalories);
+        progressBar.setMax(retrieveTargetCalories());
         progressBar.setProgress(progressValue);
+
+        String str1 = String.valueOf(progressValue);
+        SharedPreferences sharedPref = getSharedPreferences("ProgressBar1",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("name",str1);
+        editor.putInt("progressBar", water);
+        editor.apply();
+
     }
 
     private int calculateProgressValue(int currentCalories, int targetCalories) {
@@ -210,9 +247,22 @@ public class NutritionPage extends AppCompatActivity {
         return breakfastCaloriesFinal + LunchCaloriesFinal + DinnerCaloriesFinal + SnacksCaloriesFinal;
     }
     private int retrieveTargetCalories() {
-        return 100;
+        return 5000;
     }
 
     public void store_input(View view) {
     }
+
+    public void onBackPressed() {
+        if (!sidebar.onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return sidebar.onOptionsItemSelected(item);
+    }
+
 }

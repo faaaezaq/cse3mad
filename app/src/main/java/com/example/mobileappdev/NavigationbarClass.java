@@ -1,12 +1,10 @@
 package com.example.mobileappdev;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 
 public class NavigationbarClass {
     public static void setupBottomNavigation(BottomNavigationView bottomNavigationView, AppCompatActivity activity) {

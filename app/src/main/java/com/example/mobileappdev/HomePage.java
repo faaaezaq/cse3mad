@@ -1,7 +1,9 @@
 package com.example.mobileappdev;
 
-import androidx.annotation.NonNull;
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,10 +13,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Description;
@@ -25,13 +30,14 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 
 public class HomePage extends AppCompatActivity implements SensorEventListener {
     ArrayList barArrayList;
-
     SensorManager sensorManager;
     TextView stepsCounter;
 
@@ -41,12 +47,25 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
     //boolean running = false;
 
+    //boolean running = false;
     boolean isCounterSensorPresent;
 
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private SidebarClass sidebar;
+    TextView waterIntake;
+    public static final String DEFAULT = "N/A";
+    private ProgressBar summaryProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        sidebar = new SidebarClass(this, drawerLayout, navigationView);
+        sidebar.setupSidebar();
+        summaryProgressBar = findViewById(R.id.progressBar2);
 
         stepsCounter = findViewById(R.id.textView7);
 
@@ -54,11 +73,27 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
+        waterIntake = findViewById(R.id.waterIntakeNum);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyData", MODE_PRIVATE);
+        String name = sharedPreferences.getString("name",DEFAULT);
+        waterIntake.setText(name);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+
+        SharedPreferences sharedPreferences1 = getSharedPreferences("ProgressBar1", MODE_PRIVATE);
+        String progress = sharedPreferences1.getString("name", DEFAULT);
+        summaryProgressBar.setProgress(Integer.parseInt(progress));
+        SharedPreferences.Editor editor1 = sharedPreferences.edit();
+        editor1.clear();
+
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null) {
             mStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+//            stepsCounter.getDisplay(stepCount);
+            Log.d(TAG, "Steps are " + mStepCounter);
             isCounterSensorPresent = true;
         } else {
-            stepsCounter.setText("Counter Sensor is not present");
+            stepsCounter.setText("Potato");
             isCounterSensorPresent = false;
         }
 
@@ -69,6 +104,18 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
 
         //TODO: debug why floatingHomeButton doesnt work
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return sidebar.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!sidebar.onBackPressed()) {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -92,7 +139,8 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-     */
+     
+    }*/
 
     @Override
     protected void onPause() {
@@ -109,6 +157,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         if (sensorEvent.sensor == mStepCounter) {
             stepCount = (int) sensorEvent.values[0];
             stepsCounter.setText(String.valueOf(stepCount));
+            Log.d(TAG, "Step count: " + stepCount);
         }
     }
 
@@ -116,8 +165,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     public void onAccuracyChanged(Sensor sensor, int i) {
 
     }
-
-
+  
     private void getData(){
         barArrayList= new ArrayList();
         barArrayList.add(new BarEntry(2f, 1890));

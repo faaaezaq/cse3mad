@@ -1,14 +1,9 @@
 package com.example.mobileappdev;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
-import java.util.Objects;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +21,6 @@ import android.content.Intent;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
 
     FirebaseAuth fAuth;
 
@@ -60,8 +54,13 @@ public class MainActivity extends AppCompatActivity {
 
         button3 = findViewById(R.id.create_account_button1);
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, HomePage.class));
+            }
+        });
         button3.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, RegistrationPage.class));
@@ -138,5 +137,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 }

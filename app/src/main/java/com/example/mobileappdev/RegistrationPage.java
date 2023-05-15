@@ -1,9 +1,9 @@
 package com.example.mobileappdev;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-
 public class RegistrationPage extends AppCompatActivity {
 
     public static final String TAG = "TAG";
@@ -39,7 +38,6 @@ public class RegistrationPage extends AppCompatActivity {
     private Button button3;
 
     String userID;
-
     boolean isEmpty(EditText text) {
         CharSequence str = text.getText().toString();
         return TextUtils.isEmpty(str);
@@ -196,6 +194,27 @@ public class RegistrationPage extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (isEmpty(name_field)) {
+                    Toast t = Toast.makeText(getApplicationContext(), "Please Enter Your Full Name", Toast.LENGTH_LONG);
+                    t.show();
+                }
+
+                if (isEmpty(email_field)) {
+                    Toast t = Toast.makeText(getApplicationContext(), "Please Enter Your Email", Toast.LENGTH_LONG);
+                    t.show();
+                }
+
+                if (isEmpty(password_field)) {
+                    Toast t = Toast.makeText(getApplicationContext(), "PLease Enter Your Password", Toast.LENGTH_LONG);
+                    t.show();
+                }
+
+                if (!password_field.getText().toString().equals(confirm_password_field.getText().toString())) {
+                    Toast t = Toast.makeText(getApplicationContext(), "Please Ensure That Both Passwords Fields Are The Same", Toast.LENGTH_LONG);
+                    t.show();
+                }
+
 
                 if (isEmpty(name_field)) {
                     Toast t = Toast.makeText(getApplicationContext(), "Please Enter Your Full Name", Toast.LENGTH_LONG);
