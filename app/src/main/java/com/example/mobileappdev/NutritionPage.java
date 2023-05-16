@@ -55,8 +55,6 @@ public class NutritionPage extends AppCompatActivity {
     EditText SnacksIntake;
     TextView SnacksTextViewValue;
 
-
-
     protected int initalWater = 0;
     protected int water = 0;
 

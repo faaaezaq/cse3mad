@@ -17,6 +17,15 @@
         android:theme="@style/Theme.MobileAppDev"
         tools:targetApi="31">
         <activity
+            android:name=".LegWorkout"
+            android:exported="false" />
+        <activity
+            android:name=".UpperBody"
+            android:exported="false" />
+        <activity
+            android:name=".AbWorkout"
+            android:exported="false" />
+        <activity
             android:name=".NutritionPage"
             android:exported="false" />
         <activity
@@ -35,9 +44,8 @@
             android:name=".RegistrationPage"
             android:exported="false" />
         <activity
-            android:name="com.example.mobileappdev.WebpageClass"
-            android:label="" >
-        </activity>
+            android:name=".WebpageClass"
+            android:label="" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
