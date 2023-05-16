@@ -54,7 +54,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     private NavigationView navigationView;
     private SidebarClass sidebar;
     TextView waterIntake;
-    public static final String DEFAULT = "N/A";
+    public static final String DEFAULT = "0";
     private ProgressBar summaryProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
