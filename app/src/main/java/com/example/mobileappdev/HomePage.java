@@ -102,6 +102,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
+        navigationView.setCheckedItem(R.id.home);
 
         //TODO: debug why floatingHomeButton doesnt work
     }

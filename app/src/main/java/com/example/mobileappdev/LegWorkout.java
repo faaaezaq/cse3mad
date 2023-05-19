@@ -9,6 +9,7 @@ public class LegWorkout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leg_workout);
+        setContentView(R.layout.activity_lower_body_workouts
+        );
     }
 }

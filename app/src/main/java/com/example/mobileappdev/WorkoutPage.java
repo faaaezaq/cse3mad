@@ -8,7 +8,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 import android.content.Intent;
 
 
@@ -62,7 +61,9 @@ public class WorkoutPage extends AppCompatActivity {
                 return true;
             }
         });
-        ImageButton button8 = findViewById(R.id.button8);
+        navigationView.setCheckedItem(R.id.workout);
+
+        ImageButton button8 = findViewById(R.id.upper_next2);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +71,7 @@ public class WorkoutPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton button9 = findViewById(R.id.button9);
+        ImageButton button9 = findViewById(R.id.abs_next);
         button9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +79,7 @@ public class WorkoutPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton button10 = findViewById(R.id.button10);
+        ImageButton button10 = findViewById(R.id.lower_next3);
         button10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

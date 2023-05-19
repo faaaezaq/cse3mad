@@ -7,106 +7,238 @@
     android:id="@+id/drawer_layout"
     tools:context=".WorkoutPage">
 
-    <include
-        layout="@layout/generic_nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#E6FBFA">
 
-        <ImageButton
-            android:id="@+id/button8"
-            android:layout_width="412dp"
-            android:layout_height="148dp"
-            android:layout_marginTop=".1in"
-            android:gravity="center_vertical"
-            android:src="@drawable/upperbodyresized"
-            android:contentDescription="UpperBody Workout"
+        <include
+            layout="@layout/generic_nav_bar"
+            android:layout_width="411dp"
+            android:layout_height="63dp"
+            android:layout_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.483"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.027" />
+            app:layout_constraintVertical_bias="1.0" />
 
-        <ImageButton
-            android:id="@+id/button9"
-            android:layout_width="416dp"
-            android:layout_height="144dp"
-            android:layout_below="@+id/button8"
-            android:layout_marginTop=".1in"
-            android:gravity="center_vertical"
-            android:src="@drawable/abworkoutresized"
-            android:contentDescription="AB Workout"
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="410dp"
+            android:layout_height="192dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.339" />
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/workoutpageimage" />
 
-        <ImageButton
-            android:id="@+id/button10"
-            android:layout_width="413dp"
-            android:layout_height="148dp"
-            android:layout_below="@+id/button9"
-            android:layout_marginTop=".1in"
-            android:gravity="center_vertical"
-            android:contentDescription="Leg Workout"
-            android:src="@drawable/legworkoutresized"
+        <View
+            android:id="@+id/view"
+            android:layout_width="381dp"
+            android:layout_height="117dp"
+            android:background="@drawable/custom_box"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.654" />
+            app:layout_constraintVertical_bias="0.452"
+            app:layout_constraintWidth_percent="0.42" />
 
         <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upper Body Workouts"
-            android:textSize="35sp"
-            android:textColor="#FAF9F6"
+            android:id="@+id/textView4"
+            android:layout_width="143dp"
+            android:layout_height="41dp"
+            android:text="Workouts"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.059"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.061" />
+            app:layout_constraintVertical_bias="0.308"
+            app:layout_constraintWidth_percent="0.42" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="142dp"
+            android:layout_height="115dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.092"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.451"
+            app:layout_constraintWidth_percent="0.42"
+            app:srcCompat="@drawable/absworkoutpage" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="381dp"
+            android:layout_height="117dp"
+            android:background="@drawable/custom_box"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.674"
+            app:layout_constraintWidth_percent="0.42" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AB Workouts"
-            android:textColor="#FAF9F6"
-            android:textSize="35sp"
+            android:text="UPPER BODY WORKOUTS "
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.769"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.317" />
+            app:layout_constraintVertical_bias="0.603"
+            app:layout_constraintWidth_percent="0.42" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="164dp"
+            android:layout_height="89dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.668"
+            app:layout_constraintWidth_percent="0.42"
+            app:srcCompat="@drawable/workout" />
+
+        <ImageButton
+            android:id="@+id/upper_next2"
+            android:layout_width="53dp"
+            android:layout_height="49dp"
+            android:backgroundTint="@color/white"
+            android:imeOptions="actionDone"
+            android:scaleType="centerCrop"
+            android:src="@drawable/next_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.687" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="381dp"
+            android:layout_height="117dp"
+            android:background="@drawable/custom_box"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.899"
+            app:layout_constraintWidth_percent="0.42" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Leg Workouts"
-            android:textColor="#FAF9F6"
-            android:textSize="35sp"
+            android:text="LOWER BODY WORKOUTS "
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.814"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.59" />
+            app:layout_constraintVertical_bias="0.793"
+            app:layout_constraintWidth_percent="0.42" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="152dp"
+            android:layout_height="87dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.878"
+            app:layout_constraintWidth_percent="0.42"
+            app:srcCompat="@drawable/lower" />
+
+        <ImageButton
+            android:id="@+id/lower_next3"
+            android:layout_width="53dp"
+            android:layout_height="49dp"
+            android:backgroundTint="@color/white"
+            android:imeOptions="actionDone"
+            android:scaleType="centerCrop"
+            android:src="@drawable/next_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.885" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AB WORKOUTS "
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.14"
+            app:layout_constraintHorizontal_bias="0.594"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.416"
+            app:layout_constraintWidth_percent="0.42" />
+
+        <ImageButton
+            android:id="@+id/abs_next"
+            android:layout_width="53dp"
+            android:layout_height="49dp"
+            android:backgroundTint="@color/white"
+            android:imeOptions="actionDone"
+            android:scaleType="centerCrop"
+            android:src="@drawable/next_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.91"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.479" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
@@ -115,7 +247,7 @@
         app:menu="@menu/main_menu"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
-        />
+        >
 
-
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

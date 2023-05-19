@@ -72,52 +72,52 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        button2.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-
-                String email = mEmail.getText().toString();
-                String password = mPassword.getText().toString();
-
-                if (TextUtils.isEmpty(email)) {
-                    Toast t = Toast.makeText(getApplicationContext(), "Please Enter Your Email", Toast.LENGTH_LONG);
-                    t.show();
-                    mEmail.getText().clear();
-                    mPassword.getText().clear();
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    Toast t = Toast.makeText(getApplicationContext(), "Please Enter Your Password", Toast.LENGTH_LONG);
-                    t.show();
-                    mEmail.getText().clear();
-                    mPassword.getText().clear();
-                }
-                if (password.length() < 6) {
-                    Toast t = Toast.makeText(getApplicationContext(), "Password Must Be At Least 6 Characters", Toast.LENGTH_LONG);
-                    t.show();
-                    mEmail.getText().clear();
-                    mPassword.getText().clear();
-                }
-
-                if (email.length() > 0 && password.length() >= 6) {
-                    fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(MainActivity.this, HomePage.class));
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Account Not Recognised, Create Account And Try Again", Toast.LENGTH_LONG).show();
-                                mEmail.getText().clear();
-                                mPassword.getText().clear();
-                            }
-
-                        }
-                    });
-                }
-            }
-        });
+//        button2.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View v) {
+//
+//                String email = mEmail.getText().toString();
+//                String password = mPassword.getText().toString();
+//
+//                if (TextUtils.isEmpty(email)) {
+//                    Toast t = Toast.makeText(getApplicationContext(), "Please Enter Your Email", Toast.LENGTH_LONG);
+//                    t.show();
+//                    mEmail.getText().clear();
+//                    mPassword.getText().clear();
+//                }
+//
+//                if (TextUtils.isEmpty(password)) {
+//                    Toast t = Toast.makeText(getApplicationContext(), "Please Enter Your Password", Toast.LENGTH_LONG);
+//                    t.show();
+//                    mEmail.getText().clear();
+//                    mPassword.getText().clear();
+//                }
+//                if (password.length() < 6) {
+//                    Toast t = Toast.makeText(getApplicationContext(), "Password Must Be At Least 6 Characters", Toast.LENGTH_LONG);
+//                    t.show();
+//                    mEmail.getText().clear();
+//                    mPassword.getText().clear();
+//                }
+//
+//                if (email.length() > 0 && password.length() >= 6) {
+//                    fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<AuthResult> task) {
+//                            if (task.isSuccessful()){
+//                                Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_LONG).show();
+//                                startActivity(new Intent(MainActivity.this, HomePage.class));
+//                            } else {
+//                                Toast.makeText(getApplicationContext(), "Account Not Recognised, Create Account And Try Again", Toast.LENGTH_LONG).show();
+//                                mEmail.getText().clear();
+//                                mPassword.getText().clear();
+//                            }
+//
+//                        }
+//                    });
+//                }
+//            }
+//        });
 
     }
 }

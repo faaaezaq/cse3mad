@@ -9,6 +9,6 @@ public class AbWorkout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ab_workout);
+        setContentView(R.layout.activity_abs_workout);
     }
 }
