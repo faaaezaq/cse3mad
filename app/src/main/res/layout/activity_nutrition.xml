@@ -14,15 +14,50 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent">-->
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:background="@color/white"
+        android:indeterminate="false"
+        android:max="2500"
+        android:progress="50"
+        android:progressDrawable="@drawable/ic_custom_progress2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <!--    Code for Breakfast-->
+
     <TextView
-        android:id="@+id/currentCaloriesTextView"
+        android:id="@+id/calView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calories consumed"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.192" />
+
+    <TextView
+        android:id="@+id/targetCaloriesTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:background="@color/white"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:text="Calories consumed: 0"
+        android:gravity="end"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:text="Target Calories: 0"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,60 +65,9 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.045" />
+        app:layout_constraintVertical_bias="0.338" />
 
-    <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="5dp"
-            android:background="@color/white"
-            android:indeterminate="false"
-            android:max="2500"
-            android:progress="50"
-            android:progressDrawable="@drawable/ic_custom_progress2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.138" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Calories Burnt"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.235" />
-
-        <TextView
-            android:id="@+id/targetCaloriesTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="end"
-            android:paddingStart="10dp"
-            android:paddingEnd="5dp"
-            android:text="Target Calories: 0"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.39" />
-
-    <!--    Code for Breakfast-->
-
-        <TextView
+    <TextView
             android:layout_width="143dp"
             android:layout_height="47dp"
             android:text="Water Intake"
@@ -132,21 +116,21 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.45" />
 
-        <Button
-            android:id="@+id/minusButtonForWaterIntake"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:backgroundTint="@color/white"
-            android:text="-"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.953"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.45" />
+    <Button
+        android:id="@+id/minusButtonForWaterIntake"
+        android:layout_width="83dp"
+        android:layout_height="51dp"
+        android:layout_weight="0.5"
+        android:backgroundTint="@color/white"
+        android:text="-"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
 
         <TextView
             android:id="@+id/water"
@@ -214,8 +198,9 @@
 
     <ImageButton
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dp"
+        android:layout_height="49dp"
+        android:background="@drawable/custom_box"
         android:backgroundTint="@color/white"
         android:contentDescription="TODO"
         android:imeOptions="actionDone"
@@ -297,7 +282,7 @@
         android:id="@+id/LunchInputButton"
         android:layout_width="62dp"
         android:layout_height="45dp"
-        android:background="@color/white"
+        android:background="@drawable/custom_box"
         android:src="@drawable/tick_box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -369,20 +354,21 @@
         app:layout_constraintVertical_bias="0.71" />
 
     <ImageButton
-            android:id="@+id/DinnerInputButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:contentDescription="TODO"
-            android:imeOptions="actionDone"
-            android:onClick="store_input"
-            android:src="@drawable/tick_box"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.962"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.71" />
+        android:id="@+id/DinnerInputButton"
+        android:layout_width="62dp"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_box"
+        android:backgroundTint="@color/white"
+        android:contentDescription="TODO"
+        android:imeOptions="actionDone"
+        android:onClick="store_input"
+        android:src="@drawable/tick_box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71" />
 
     <!--        Snacks Code below-->
 
@@ -450,22 +436,23 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.8" />
 
-        <ImageButton
-            android:id="@+id/SnacksInputButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            android:contentDescription="TODO"
-            android:imeOptions="actionDone"
-            android:onClick="store_input"
-            android:src="@drawable/tick_box"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.962"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.8" />
+    <ImageButton
+        android:id="@+id/SnacksInputButton"
+        android:layout_width="62dp"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@drawable/custom_box"
+        android:backgroundTint="@color/white"
+        android:contentDescription="TODO"
+        android:imeOptions="actionDone"
+        android:onClick="store_input"
+        android:src="@drawable/tick_box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
 
 
     <TextView
@@ -494,7 +481,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-<!--    <Button-->
+    <TextView
+        android:id="@+id/currentCaloriesTextView"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:text="0"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.164" />
+
+    <!--    <Button-->
 <!--        android:id="@+id/button"-->
 <!--        android:layout_width="0dp"-->
 <!--        android:layout_height="0dp"-->
