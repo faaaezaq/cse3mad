@@ -9,6 +9,6 @@ public class UpperBody extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upper_body);
+        setContentView(R.layout.activity_upper_body_workouts);
     }
 }

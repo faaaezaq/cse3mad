@@ -61,6 +61,8 @@ public class WorkoutPage extends AppCompatActivity {
                 return true;
             }
         });
+        navigationView.setCheckedItem(R.id.workout);
+
         ImageButton button8 = findViewById(R.id.upper_next2);
         button8.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,6 +11,8 @@ public class NavigationbarClass {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+
                 switch (item.getItemId()) {
                     case R.id.home:
                         activity.startActivity(new Intent(activity, HomePage.class));
