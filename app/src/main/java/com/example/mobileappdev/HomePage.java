@@ -5,9 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
+import android.annotation.SuppressLint;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -17,27 +15,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.Description;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import android.content.SharedPreferences;
 
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 
 public class HomePage extends AppCompatActivity implements SensorEventListener {
-    ArrayList barArrayList;
     SensorManager sensorManager;
     TextView stepsCounter;
 
@@ -45,10 +30,14 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
     int stepCount = 0;
 
-    //boolean running = false;
-
-    //boolean running = false;
     boolean isCounterSensorPresent;
+
+    ProgressBar stepsProgressDisplay;
+    ProgressBar caloriesBurned;
+
+    TextView stepsCount;
+    TextView calorieConsumedNum;
+    TextView caloriesBurnedNum;
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
@@ -56,6 +45,7 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
     TextView waterIntake;
     public static final String DEFAULT = "0";
     private ProgressBar summaryProgressBar;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +57,14 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         sidebar.setupSidebar();
         summaryProgressBar = findViewById(R.id.progressBar2);
 
-        stepsCounter = findViewById(R.id.textView7);
+        stepsProgressDisplay = findViewById(R.id.stepsProgressBar);
+        caloriesBurned = findViewById(R.id.calorieBurnedProgress);
 
+        calorieConsumedNum = findViewById(R.id.caloriesConsumed);
+        caloriesBurnedNum = findViewById(R.id.caloriesBurned);
+
+        stepsCounter = findViewById(R.id.textView7);
+        stepsCount = findViewById(R.id.stepsTextView);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -89,22 +85,29 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
 
         if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null) {
             mStepCounter = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-//            stepsCounter.getDisplay(stepCount);
-            Log.d(TAG, "Steps are " + mStepCounter);
             isCounterSensorPresent = true;
         } else {
-            stepsCounter.setText("Potato");
+            stepsCounter.setText("No Sensor");
             isCounterSensorPresent = false;
         }
-
-        getData();
-        barChartStyling();
-
+// 94-96 is setting up Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
         navigationView.setCheckedItem(R.id.home);
 
-        //TODO: debug why floatingHomeButton doesnt work
+        SharedPreferences sharedPreferences2 = getSharedPreferences("ProgressBar1", MODE_PRIVATE);
+        calorieConsumedNum.setText(String.valueOf(sharedPreferences2.getInt("progressValue", Integer.parseInt(DEFAULT))));
+
+//        Line 102-109 catch when the Reset button is clcked on the Nutrition page and hence reset the values on the Home page
+        boolean resetButtonClicked = getIntent().getBooleanExtra("resetButtonClicked", false);
+        if (resetButtonClicked) {
+            calorieConsumedNum.setText("0");
+            summaryProgressBar.setProgress(0);
+            SharedPreferences sharedPreferences3 = getSharedPreferences("ProgressBar1", MODE_PRIVATE);
+            SharedPreferences.Editor editor2 = sharedPreferences3.edit();
+            editor2.clear();
+            editor2.apply();
+        }
     }
 
     @Override
@@ -125,84 +128,29 @@ public class HomePage extends AppCompatActivity implements SensorEventListener {
         if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
             sensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
     }
-
-
-    /*@Override
-    protected void onResume() {
-        super.onResume();
-        running = true;
-        Sensor countSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (countSensor != null) {
-            sensorManager.registerListener((SensorEventListener) this, countSensor, SensorManager.SENSOR_DELAY_UI);
-        } else {
-            Toast.makeText(this, "Sensor Not Found!", Toast.LENGTH_LONG).show();
-
-        }
-    }
-
-     
-    }*/
-
     @Override
     protected void onPause() {
         super.onPause();
         if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)!= null)
             sensorManager.unregisterListener(this, mStepCounter);
-        //To Unregister
     }
-
-
-
+//    line 138-147 : this is when the sensor is present, the steps are being populated in the correct TextView along with the
+//    progressBar being updated with it.
     @Override
     public void onSensorChanged (SensorEvent sensorEvent) {
         if (sensorEvent.sensor == mStepCounter) {
             stepCount = (int) sensorEvent.values[0];
             stepsCounter.setText(String.valueOf(stepCount));
-            Log.d(TAG, "Step count: " + stepCount);
+            stepsProgressDisplay.setProgress(Integer.parseInt(String.valueOf(stepsCounter.getText())));
+            stepsCount.setText(String.valueOf(stepsCounter.getText()));
+            int caloriesPerStep = (int) (Integer.parseInt(String.valueOf(stepsCounter.getText())) * 0.04);
+            caloriesBurned.setProgress(caloriesPerStep);
+            caloriesBurnedNum.setText(String.valueOf(caloriesPerStep));
         }
     }
-
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
 
-    }
-  
-    private void getData(){
-        barArrayList= new ArrayList();
-        barArrayList.add(new BarEntry(2f, 1890));
-        barArrayList.add(new BarEntry(3f, 2033));
-        barArrayList.add(new BarEntry(4f, 3034));
-        barArrayList.add(new BarEntry(5f, 4780));
-        barArrayList.add(new BarEntry(6f, 5320));
-        barArrayList.add(new BarEntry(7f, 5220));
-        barArrayList.add(new BarEntry(8f, 5021));
-    }
-
-    private void barChartStyling(){
-        BarChart barChart=findViewById(R.id.barchartUI);
-        Description description = new Description();
-        description.setText("Steps count");
-        barChart.setDescription(description);
-
-        BarDataSet barDataSet = new BarDataSet(barArrayList, "STEP COUNT");
-        BarData barData = new BarData(barDataSet);
-        barChart.setData(barData);
-        barDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
-        barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
-
-        barChart.getDescription().setEnabled(true);
-        barChart.getLegend().setEnabled(false);
-        barChart.getAxisLeft().setDrawGridLines(false);
-        barChart.getAxisRight().setDrawGridLines(false);
-        barChart.getXAxis().setDrawGridLines(false);
-        barChart.getAxisRight().setEnabled(false);
-
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        String[] daysOfWeek = {"", "", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat","Sun"};
-        //TODO: Debug days of the week to figure out why it ignores the first two indexes
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(daysOfWeek));
     }
 
 }

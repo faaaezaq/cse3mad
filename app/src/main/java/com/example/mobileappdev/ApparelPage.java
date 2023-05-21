@@ -22,9 +22,8 @@ public class ApparelPage extends AppCompatActivity {
     private ImageButton adidas_button;
     private ImageButton gymshark_button;
 
-    Context context;
 
-
+    // The code below has image buttons hyperlinked to the different brand websites.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,10 +31,6 @@ public class ApparelPage extends AppCompatActivity {
         nike_button = findViewById(R.id.nike_next);
         adidas_button = findViewById(R.id.adidas_next);
         gymshark_button = findViewById(R.id.gymshark_next);
-
-
-
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationBar);
         NavigationbarClass.setupBottomNavigation(bottomNavigationView, this);
 
