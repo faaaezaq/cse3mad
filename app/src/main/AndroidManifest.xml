@@ -32,9 +32,6 @@
             android:name=".HomePage"
             android:exported="false" />
         <activity
-            android:name=".WeightsPage"
-            android:exported="false" />
-        <activity
             android:name=".ApparelPage"
             android:exported="false" />
         <activity
