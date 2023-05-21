@@ -9,7 +9,7 @@ import com.google.android.material.navigation.NavigationView;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.widget.Toast;
-
+//Setting up the global Side Navigation Bar here for using in different pages in the app
 public class SidebarClass {
     private final AppCompatActivity activity;
     private final DrawerLayout drawerLayout;

@@ -6,6 +6,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
+// A bit of JavaScript so the Websites Hyperlinked work the way they're intended to.
 public class WebpageClass extends AppCompatActivity {
     WebView webView;
     @Override

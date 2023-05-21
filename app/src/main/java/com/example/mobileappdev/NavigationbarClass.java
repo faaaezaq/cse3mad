@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+//Setting up the global Bottom Navigation Bar here for using in different pages in the app
 public class NavigationbarClass {
     public static void setupBottomNavigation(BottomNavigationView bottomNavigationView, AppCompatActivity activity) {
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
